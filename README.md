@@ -15,3 +15,6 @@
 5.  Como aluno, no período de matrícula, quero poder adicionar disciplinas optativas à minha grade, respeitando o limite máximo de duas disciplinas.
 6. Como aluno quero ser notificado sobre a cobrança das minhas disciplinas.
 7. Como usuario eu quero poder fazer login no sistema.
+
+### Diagrama de caso de uso
+    ![Diagrama de caso de uso](Documents/UCDiagram.png)
