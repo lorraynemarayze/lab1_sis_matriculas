@@ -6,15 +6,21 @@
 - Lorrayne Marayze Silva de Oliveira
 
 
-### Histórias de usuario
+### Histórias de Usuário
 
-1. Como professor eu quero poder consultar as disciplinas para ver os alunos matriculados.
-2. Como aluno eu quero poder me matricular em uma disciplina.
-3. Como aluno eu quero poder me matricular em disciplinas alternativas (optativas).
-4. Como aluno eu quero poder cancelar minha matrícula em uma disciplina.
-5.  Como aluno, no período de matrícula, quero poder adicionar disciplinas optativas à minha grade, respeitando o limite máximo de duas disciplinas.
-6. Como aluno quero ser notificado sobre a cobrança das minhas disciplinas.
-7. Como usuario eu quero poder fazer login no sistema.
+UC1. Como professor eu quero poder consultar as disciplinas para ver os alunos matriculados.
+
+UC2. Como aluno eu quero poder me matricular em uma disciplina.
+
+UC3. Como aluno eu quero poder me matricular em disciplinas alternativas (optativas).
+
+UC4. Como aluno eu quero poder cancelar minha matrícula em uma disciplina.
+
+UC5. Como aluno, no período de matrícula, quero poder adicionar disciplinas optativas à minha grade, respeitando o limite máximo de duas disciplinas.
+
+UC6. Como aluno quero ser notificado sobre a cobrança das minhas disciplinas.
+
+UC7. Como usuario eu quero poder fazer login no sistema.
 
 ### Diagrama de caso de uso
     ![Diagrama de caso de uso](Documents/UCDiagram.png)
