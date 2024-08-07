@@ -23,4 +23,6 @@ UC6. Como aluno quero ser notificado sobre a cobrança das minhas disciplinas.
 UC7. Como usuário eu quero poder fazer login no sistema.
 
 ### Diagrama de caso de uso
-    <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/UCDiagram.png"/>
+<div>
+    <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/UCDiagram.png?raw=true"/>
+</div>
