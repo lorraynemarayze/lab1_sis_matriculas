@@ -26,7 +26,7 @@ UC8.  Como secretário, quero poder gerar o currículo de cada curso para o pró
 
 UC9. Como secretário, quero poder abrir e fechar o período de matrículas.
 
-### Diagrama de caso de uso
+### Diagrama de Caso de Uso
 <div>
     <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/UCDiagram.png?raw=true"/>
 </div>
