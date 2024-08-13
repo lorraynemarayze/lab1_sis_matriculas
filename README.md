@@ -9,26 +9,31 @@
 - Estevão de Faria Rodrigues
 - Lorrayne Marayze Silva de Oliveira
 
-
 ### Histórias de Usuário
 
-UC1. Como professor eu quero poder consultar as disciplinas para ver os alunos matriculados.
+UC1. Como secretária, quero gerar o currículo para disponibilizar para os alunos.
 
-UC2. Como aluno eu quero poder me matricular em uma disciplina.
+UC2. Como secretário, quero poder abrir e fechar o período de matrículas.
 
-UC3. Como aluno eu quero poder me matricular em disciplinas alternativas (optativas).
+UC3. Como secretária, quero atualizar as informações sobre disciplinas, alunos e professores para manter os dados em dia.
 
-UC4. Como aluno eu quero poder cancelar minha matrícula em uma disciplina.
+UC4. Como aluno, quero realizar minha matrícula para me regularizar no curso.
 
-UC5. Como aluno, no período de matrícula, quero poder adicionar disciplinas optativas à minha grade, respeitando o limite máximo de duas disciplinas.
+UC5. Como aluno, quero realizar a matrícula em matérias obrigatórias para conseguir completar minha matrícula geral.
 
-UC6. Como aluno quero ser notificado sobre a cobrança das minhas disciplinas.
+UC6. Como aluno, quero realizar a matrícula em matérias optativas para cumprir as horas complementares do curso.
 
-UC7. Como usuário eu quero poder fazer login no sistema.
+UC7. Como aluno, quero consultar o número de créditos de uma disciplina para gerenciar quantos créditos preciso para me formar.
 
-UC8.  Como secretário, quero poder gerar o currículo de cada curso para o próximo semestre, definindo as disciplinas, professores e horários.
+UC8. Como aluno, quero cancelar a matrícula para não precisar cursar mais uma disciplina.
 
-UC9. Como secretário, quero poder abrir e fechar o período de matrículas.
+UC9. Como professor, quero visualizar os alunos matriculados para planejar minhas aulas.
+
+UC10. Como professor, quero visualizar minhas turmas para gerenciar meus horários.
+
+UC11. Como usuário, quero fazer login para acessar o sistema.
+
+UC12. Como aluno, quero ser notificado sobre a cobrança das minhas disciplinas.
 
 ### Diagrama de Caso de Uso
 <div>
