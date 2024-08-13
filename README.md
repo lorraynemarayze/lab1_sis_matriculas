@@ -1,3 +1,7 @@
+<div>
+<img alt="Guthub Banner" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/GitHub-Banner.png"/>
+</div>
+    
 # Laboratório 1 - Sistema de Matrículas 
 
 ### Integrantes
@@ -28,5 +32,5 @@ UC9. Como secretário, quero poder abrir e fechar o período de matrículas.
 
 ### Diagrama de Caso de Uso
 <div>
-    <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/UCDiagram.png?raw=true"/>
+    <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/UCDiagram%20v2.jpg"/>
 </div>
