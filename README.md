@@ -1,5 +1,5 @@
 <div>
-<img alt="Guthub Banner" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/GitHub-Banner.png"/>
+<img alt="Guthub Banner" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documentos/GitHub-Banner.png"/>
 </div>
     
 # Laboratório 1 - Sistema de Matrículas 
@@ -37,5 +37,5 @@ UC12. Como aluno, quero ser notificado sobre a cobrança das minhas disciplinas.
 
 ### Diagrama de Caso de Uso
 <div>
-    <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documents/UCDiagram%20v2.jpg"/>
+    <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documentos/UC_Diagrama/UCDiagram%20v2.jpg"/>
 </div>
