@@ -1,5 +1,3 @@
-package lab1_sis_matriculas.Codigo;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +8,7 @@ public class Disciplina implements Serializable {
     private int cargaHoraria; 
     private List<Aluno> alunos;
     private Boolean isAtivo;
+    private Professor professor;
 
     // Construtor para registro de disciplina via terminal
     public Disciplina(String nome, String id, int cargaHoraria) {
@@ -18,6 +17,7 @@ public class Disciplina implements Serializable {
         this.cargaHoraria = cargaHoraria;
         this.alunos = new ArrayList<>();
         this.isAtivo = true; // Por padrão, a disciplina é ativa
+        this.professor = null;
     }
 
     // Construtor para leitura de arquivo
@@ -33,6 +33,13 @@ public class Disciplina implements Serializable {
     public void adicionarAluno(Aluno aluno) {
         if (isAtivo && !alunos.contains(aluno)) {
             alunos.add(aluno);
+        }
+    }
+    // Método para remover aluno
+    public void removerAluno(Aluno aluno) {
+        if (alunos.contains(aluno)) {
+            alunos.remove(aluno);
+            verificarAtivacao();
         }
     }
 
@@ -86,6 +93,14 @@ public class Disciplina implements Serializable {
 
     public void setIsAtivo(Boolean isAtivo) {
         this.isAtivo = isAtivo;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     @Override

@@ -1,5 +1,3 @@
-package lab1_sis_matriculas.Codigo;
-
 import java.util.ArrayList;
 import java.util.List;
 

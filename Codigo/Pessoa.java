@@ -1,5 +1,3 @@
-package lab1_sis_matriculas.Codigo;
-
 public class Pessoa {
     private String nome;
     private String id;
@@ -20,15 +18,20 @@ public class Pessoa {
     }
 
     // Método privado para encontrar o tipo de pessoa a partir de uma string
-    private static IPessoa findTipoByString(String tipoStr) {
-        switch (tipoStr.toLowerCase()) {
-            case "aluno":
-                return new Aluno(); 
-            case "professor":
-                return new Professor(); 
-            default:
-                throw new IllegalArgumentException("Tipo desconhecido: " + tipoStr);
+    private IPessoa findTipoByString(String tipo) {
+        switch (tipo) {
+            case "PROFESSOR" -> {
+                return new Professor();
+            }
+            case "ALUNO" -> {
+                return new Aluno();
+            }
+            case "SECRETARIO" -> {
+                return new Secretario();
+            }
         }
+
+        return null;
     }
 
     // Getters e Setters

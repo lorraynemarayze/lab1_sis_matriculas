@@ -20,7 +20,7 @@ public class Professor implements IPessoa {
 
     public void cadastrarEmDisciplina(String disciplina) {
         this.idsClasses.add(disciplina);
-    }
+    }    
 
     public void imprimirDisciplinas() {
         if (idsClasses.isEmpty()) {
@@ -33,7 +33,6 @@ public class Professor implements IPessoa {
         }
     }
 
-    @Override
     public void exibirMenu() {
         System.out.println("Menu do Professor:");
         System.out.println("1. Visualizar disciplinas");

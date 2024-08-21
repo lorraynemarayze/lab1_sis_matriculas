@@ -1,9 +1,9 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class Secretario extends Pessoa {
-    public Secretario(String nome, String id, String senha) {
-        super(nome, id, senha, "Secretario");
+public class Secretario implements IPessoa {
+    public Secretario() {
+        super();
     }
 
     // Métodos para gerenciar o período de matrícula
@@ -34,7 +34,9 @@ public class Secretario extends Pessoa {
         String nome = scanner.nextLine();
         System.out.print("Digite o ID da disciplina: ");
         String id = scanner.nextLine();
-        disciplinas.add(new Disciplina(nome, id));
+        System.out.print("Digite a carga horária da disciplina: ");
+        int cargaHoraria = Integer.parseInt(scanner.nextLine());
+        disciplinas.add(new Disciplina(nome, id, cargaHoraria));
         System.out.println("Disciplina adicionada com sucesso!");
     }
 
@@ -58,7 +60,7 @@ public class Secretario extends Pessoa {
             if (disciplina.getId().equals(id)) {
                 System.out.print("Digite o novo nome da disciplina: ");
                 String novoNome = scanner.nextLine();
-                disciplina.setNome(novoNome);
+                disciplina.renomear(novoNome);
                 System.out.println("Disciplina renomeada com sucesso!");
                 return;
             }
