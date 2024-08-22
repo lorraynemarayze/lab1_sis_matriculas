@@ -39,3 +39,9 @@ UC12. Como aluno, quero ser notificado sobre a cobrança das minhas disciplinas.
 <div>
     <img alt="Diagrama de caso de uso" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documentos/UC_Diagrama/UCDiagram%20v2.jpg"/>
 </div>
+
+### Diagrama de Classe
+<div>
+    <img alt="Diagrama de classe" src="https://github.com/lorraynemarayze/lab1_sis_matriculas/blob/main/Documentos/diagram_de_classes_models.drawio.png"/>
+</div>
+
