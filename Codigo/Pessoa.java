@@ -19,19 +19,24 @@ public class Pessoa {
 
     // Método privado para encontrar o tipo de pessoa a partir de uma string
     private IPessoa findTipoByString(String tipo) {
-        switch (tipo) {
-            case "PROFESSOR" -> {
-                return new Professor();
-            }
-            case "ALUNO" -> {
-                return new Aluno();
-            }
-            case "SECRETARIO" -> {
-                return new Secretario();
-            }
+        if (tipo == null) {
+            throw new IllegalArgumentException("Tipo não pode ser nulo");
         }
 
-        return null;
+        switch (tipo.toUpperCase()) {
+            case "PROFESSOR": {
+                return new Professor();
+            }
+            case "ALUNO": {
+                return new Aluno();
+            }
+            case "SECRETARIO": {
+                return new Secretario();
+            }
+
+            default:
+            throw new IllegalArgumentException("Tipo desconhecido: " + tipo);
+        }
     }
 
     // Getters e Setters

@@ -2,10 +2,36 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Aluno implements IPessoa {
+    private String nome;
+    private String id;
     private List<Disciplina> gradeCurricular;
 
+    // Construtor com parâmetros nome e id
+    public Aluno(String nome, String id) {
+        this.nome = nome;
+        this.id = id;
+        this.gradeCurricular = new ArrayList<>();
+    }
+
+    // Construtor padrão
     public Aluno() {
         this.gradeCurricular = new ArrayList<>();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public List<Disciplina> getGradeCurricular() {
@@ -21,7 +47,7 @@ public class Aluno implements IPessoa {
         // Verifique se a disciplina já está na grade curricular antes de adicionar
         if (!gradeCurricular.contains(disciplina)) {
             this.realizarMatriculaNaMemoria(disciplina);
-            disciplina.adicionarAlunos(this); // Adiciona o aluno à disciplina
+            disciplina.adicionarAluno(this);
             System.out.println("Aluno matriculado em " + disciplina.getNome() + " com sucesso!");
         } else {
             System.out.println("Aluno já está matriculado nesta disciplina.");
@@ -32,7 +58,7 @@ public class Aluno implements IPessoa {
         // Implementação para cancelar a matrícula do aluno na disciplina
         if (gradeCurricular.contains(disciplina)) {
             this.gradeCurricular.remove(disciplina);
-            disciplina.removerAluno(this); // Remove o aluno da disciplina
+            disciplina.removerAluno(this); 
             System.out.println("Matrícula em " + disciplina.getNome() + " cancelada com sucesso!");
         } else {
             System.out.println("Aluno não está matriculado nesta disciplina.");

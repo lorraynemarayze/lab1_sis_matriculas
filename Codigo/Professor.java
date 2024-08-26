@@ -2,12 +2,46 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Professor implements IPessoa {
+    private String nome;
+    private String id;
+    private String senha;
     private List<String> idsClasses;
 
+    public Professor(String nome, String id, String senha) {
+        this.nome = nome;
+        this.id = id;
+        this.senha = senha;
+        this.idsClasses = new ArrayList<>();
+    }
+
+    // Construtor padrão
     public Professor() {
         this.idsClasses = new ArrayList<>();
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public List<String> getIdsClasses() {
         return this.idsClasses;
@@ -33,13 +67,13 @@ public class Professor implements IPessoa {
         }
     }
 
+    @Override
     public void exibirMenu() {
         System.out.println("Menu do Professor:");
         System.out.println("1. Visualizar disciplinas");
         System.out.println("2. Imprimir alunos de uma disciplina");
     }
 
-    // Método para imprimir alunos de uma disciplina (a ser implementado)
     public void imprimirAlunosDeDisciplina(String disciplinaId) {
         // Implementação para recuperar a disciplina pelo ID e imprimir os alunos matriculados
         System.out.println("Método imprimirAlunosDeDisciplina ainda não implementado.");
