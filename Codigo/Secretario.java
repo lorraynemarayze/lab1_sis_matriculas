@@ -73,27 +73,27 @@ public class Secretario implements IPessoa {
         String disciplinaId = scanner.nextLine();
         System.out.print("Digite o ID do professor: ");
         String professorId = scanner.nextLine();
-
+    
         Disciplina disciplina = null;
         Professor professor = null;
-
+    
         for (Disciplina d : disciplinas) {
             if (d.getId().equals(disciplinaId)) {
                 disciplina = d;
                 break;
             }
         }
-
+    
         for (Professor p : professores) {
             if (p.getId().equals(professorId)) {
                 professor = p;
                 break;
             }
         }
-
+    
         if (disciplina != null && professor != null) {
-            disciplina.setProfessor(professor);
-            professor.cadastrarEmDisciplina(disciplina.getId());
+            disciplina.setProfessor(professor); 
+            professor.cadastrarEmDisciplina(disciplina); // Pass the Disciplina object
             System.out.println("Professor atribuído à disciplina com sucesso!");
         } else {
             System.out.println("Disciplina ou professor não encontrado.");

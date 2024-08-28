@@ -5,19 +5,16 @@ public class Professor implements IPessoa {
     private String nome;
     private String id;
     private String senha;
-    private List<String> idsClasses;
+    private List<Disciplina> disciplinas; // List to store Disciplina objects
 
     public Professor(String nome, String id, String senha) {
         this.nome = nome;
         this.id = id;
         this.senha = senha;
-        this.idsClasses = new ArrayList<>();
+        this.disciplinas = new ArrayList<>(); // Initialize the list
     }
 
-    // Construtor padrão
-    public Professor() {
-        this.idsClasses = new ArrayList<>();
-    }
+    // Getters and Setters
 
     public String getNome() {
         return nome;
@@ -43,28 +40,40 @@ public class Professor implements IPessoa {
         this.senha = senha;
     }
 
-    public List<String> getIdsClasses() {
-        return this.idsClasses;
+    public List<Disciplina> getDisciplinas() {
+        return this.disciplinas;
     }
 
-    public void setIdsClasses(List<String> idsClasses) {
-        this.idsClasses = idsClasses;
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 
+    // Other methods
 
-    public void cadastrarEmDisciplina(String disciplina) {
-        this.idsClasses.add(disciplina);
-    }    
+    public void cadastrarEmDisciplina(Disciplina disciplina) {
+        this.disciplinas.add(disciplina);
+    }
 
     public void imprimirDisciplinas() {
-        if (idsClasses.isEmpty()) {
+        if (disciplinas.isEmpty()) {
             System.out.println("Este professor não está cadastrado em nenhuma disciplina.");
             return;
         }
         System.out.println("Disciplinas ministradas por este professor:");
-        for (String disciplina : idsClasses) {
-            System.out.println("- " + disciplina);
+        for (Disciplina disciplina : disciplinas) {
+            System.out.println("- " + disciplina.getNome());
         }
+    }
+
+    public void imprimirAlunosDeDisciplina(String disciplinaId) {
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getId().equals(disciplinaId)) {
+                System.out.println("Alunos matriculados em " + disciplina.getNome() + ":");
+                disciplina.imprimirAlunos();
+                return;
+            }
+        }
+        System.out.println("Disciplina não encontrada.");
     }
 
     @Override
@@ -72,10 +81,5 @@ public class Professor implements IPessoa {
         System.out.println("Menu do Professor:");
         System.out.println("1. Visualizar disciplinas");
         System.out.println("2. Imprimir alunos de uma disciplina");
-    }
-
-    public void imprimirAlunosDeDisciplina(String disciplinaId) {
-        // Implementação para recuperar a disciplina pelo ID e imprimir os alunos matriculados
-        System.out.println("Método imprimirAlunosDeDisciplina ainda não implementado.");
     }
 }

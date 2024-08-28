@@ -10,6 +10,7 @@ public class Disciplina implements Serializable {
     private Boolean isAtivo;
     private Professor professor;
 
+
     // Construtor para registro de disciplina via terminal
     public Disciplina(String nome, String id, int cargaHoraria) {
         this.nome = nome;
@@ -52,7 +53,7 @@ public class Disciplina implements Serializable {
     public void imprimirAlunos() {
         if (!alunos.isEmpty()) {
             for (Aluno aluno : alunos) {
-                System.out.println(aluno); 
+                System.out.println("- " + aluno.getNome() + " (ID: " + aluno.getId() + ")"); 
             }
         } else {
             System.out.println("Nenhum aluno registrado na disciplina.");
@@ -110,7 +111,6 @@ public class Disciplina implements Serializable {
                 ", id='" + id + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 ", isAtivo=" + isAtivo +
-                ", alunos=" + alunos +
                 '}';
     }
 }

@@ -25,7 +25,8 @@ public class Pessoa {
 
         switch (tipo.toUpperCase()) {
             case "PROFESSOR": {
-                return new Professor();
+                return new Professor("", "", "");
+                //Construindo professor vazio.
             }
             case "ALUNO": {
                 return new Aluno();
