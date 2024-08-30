@@ -1,4 +1,5 @@
 package Model;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -15,9 +16,6 @@ public class Aluno extends Pessoa implements IPessoa {
         this.tipo = "Aluno";
         this.gradeCurricular = new ArrayList<>();
     }
-
-  
-   
 
     @Override
     public void exibirMenu() {
@@ -66,6 +64,5 @@ public class Aluno extends Pessoa implements IPessoa {
     public void setGradeCurricular(List<Disciplina> gradeCurricular) {
         this.gradeCurricular = gradeCurricular;
     }
-
 
 }
