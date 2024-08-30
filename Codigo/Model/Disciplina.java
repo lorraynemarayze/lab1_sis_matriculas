@@ -1,19 +1,24 @@
+package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Disciplina implements Serializable {
+    private int id;
     private String nome;
-    private String id;
+    private int periodo;
     private int cargaHoraria; 
-    private List<Aluno> alunos;
     private Boolean isAtivo;
     private Professor professor;
+    private List<Aluno> alunos;
+    
 
     // Construtor para registro de disciplina via terminal
-    public Disciplina(String nome, String id, int cargaHoraria) {
+    public Disciplina(int id, String nome,  int periodo, int cargaHoraria, 
+    boolean isAtivo) {
         this.nome = nome;
         this.id = id;
+        this.periodo = periodo;
         this.cargaHoraria = cargaHoraria;
         this.alunos = new ArrayList<>();
         this.isAtivo = true; // Por padrão, a disciplina é ativa
@@ -21,32 +26,16 @@ public class Disciplina implements Serializable {
     }
 
     // Construtor para leitura de arquivo
-    public Disciplina(String nome, String id, int cargaHoraria, List<Aluno> alunos, Boolean isAtivo) {
+    public Disciplina(String nome, int id, int periodo, int cargaHoraria, Boolean isAtivo, Professor professor, List<Aluno> alunos) {
         this.nome = nome;
         this.id = id;
+        this.periodo = periodo;
         this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
         this.alunos = alunos;
         this.isAtivo = isAtivo;
     }
 
-    // Método para adicionar aluno
-    public void adicionarAluno(Aluno aluno) {
-        if (isAtivo && !alunos.contains(aluno)) {
-            alunos.add(aluno);
-        }
-    }
-    // Método para remover aluno
-    public void removerAluno(Aluno aluno) {
-        if (alunos.contains(aluno)) {
-            alunos.remove(aluno);
-            verificarAtivacao();
-        }
-    }
-
-    // Método para renomear disciplina
-    public void renomear(String nome) {
-        this.nome = nome;
-    }
 
     // Método para imprimir alunos
     public void imprimirAlunos() {
@@ -71,8 +60,16 @@ public class Disciplina implements Serializable {
         return nome;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
+    }
+
+    public int getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(int periodo) {
+        this.periodo = periodo;
     }
 
     public int getCargaHoraria() {
@@ -83,7 +80,7 @@ public class Disciplina implements Serializable {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Boolean getIsAtivo() {
+    public Boolean isAtivo() {
         return isAtivo;
     }
 

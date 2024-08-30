@@ -1,31 +1,26 @@
+package Model;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
+    private int id;
     private String nome;
     private int qtdeCreditos;
     private List<Disciplina> disciplinas;
+    private boolean periodoMatricula; 
+
 
     // Construtor
-    public Curso(String nome, int qtdeCreditos) {
+    public Curso(int id, String nome, int qtdeCreditos) {
+        this.id = id;
         this.nome = nome;
         this.qtdeCreditos = qtdeCreditos;
         this.disciplinas = new ArrayList<>();
-    }
-
-    // Método para adicionar disciplina ao curso
-    public void adicionarDisciplina(Disciplina disciplina) {
-        if (!disciplinas.contains(disciplina)) {
-            disciplinas.add(disciplina);
-        }
-    }
-
-    // Método para remover disciplina do curso
-    public void removerDisciplina(Disciplina disciplina) {
-        disciplinas.remove(disciplina);
+        this.periodoMatricula = true; //padrão é true
     }
 
     // Método para imprimir as disciplinas do curso
+    // Mudar pra ToString()
     public void imprimirDisciplinas() {
         if (!disciplinas.isEmpty()) {
             for (Disciplina disciplina : disciplinas) {
@@ -37,6 +32,15 @@ public class Curso {
     }
 
     // Getters e Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -56,4 +60,17 @@ public class Curso {
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public boolean isPeriodoMatricula() {
+        return periodoMatricula;
+    }
+
+    public void setPeriodoMatricula(boolean periodoMatricula) {
+        this.periodoMatricula = periodoMatricula;
+    }
+
 }

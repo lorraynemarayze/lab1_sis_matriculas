@@ -1,44 +1,11 @@
-import java.util.List;
-import java.util.ArrayList;
+package Service;
 
-public class Aluno implements IPessoa {
-    private String nome;
-    private String id;
-    private List<Disciplina> gradeCurricular;
+import Model.Disciplina;
+import Model.Aluno;
 
-    // Construtor com parâmetros nome e id
-    public Aluno(String nome, String id) {
-        this.nome = nome;
-        this.id = id;
-        this.gradeCurricular = new ArrayList<>();
-    }
 
-    // Construtor padrão
-    public Aluno() {
-        this.gradeCurricular = new ArrayList<>();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public List<Disciplina> getGradeCurricular() {
-        return gradeCurricular;
-    }
-
-    public void realizarMatriculaNaMemoria(Disciplina disciplina) {
+public class AlunoService {
+     public void realizarMatriculaNaMemoria(Disciplina disciplina) {
         this.gradeCurricular.add(disciplina);
     }
 
@@ -75,13 +42,5 @@ public class Aluno implements IPessoa {
                 System.out.println("- " + disciplina.getNome());
             }
         }
-    }
-
-    @Override
-    public void exibirMenu() {
-        System.out.println("Menu do Aluno:");
-        System.out.println("1. Matricular em disciplina");
-        System.out.println("2. Cancelar matrícula em disciplina");
-        System.out.println("3. Verificar grade curricular");
     }
 }

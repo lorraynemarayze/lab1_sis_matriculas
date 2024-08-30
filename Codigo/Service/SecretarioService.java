@@ -1,20 +1,41 @@
-import java.util.List;
-import java.util.Scanner;
+package Service;
 
-public class Secretario implements IPessoa {
-    public Secretario() {
-        super();
-    }
+import Model.Aluno;
+import Model.Disciplina;
+import Model.Pessoa;
+import Model.Professor;
 
+
+
+public class SecretarioService {
     // Métodos para gerenciar o período de matrícula
-    public void alterarPeriodoMatricula() {
-        System.out.println("Método alterarPeriodoMatricula() ainda não implementado.");
-        // Implemente a lógica para alterar o período de matrícula
-    }
+    // public static void alterarPeriodoMatricula() {
+    //     if (periodoMatricula == true) {
+    //         periodoMatricula = false;
+    //         System.out.println("Período de matrículas fechado com sucesso.");
+    //     } else {
+    //         periodoMatricula = true;
+    //         System.out.println("Período de matrículas aberto com sucesso.");
+    //     }
+    // }
 
     public void gerenciarCurriculo() {
-        System.out.println("Método gerenciarCurriculo() ainda não implementado.");
-        // Implemente a lógica para gerenciar o currículo dos cursos
+        System.out.println("Gerenciar currículo:");
+        System.out.println("1. Adicionar Disciplina");
+        System.out.println("2. Remover Disciplina");
+        System.out.println("3. Renomear Disciplina");
+        System.out.println("4. Sair");
+        
+        Scanner scanner = new Scanner(System.in);
+        int opcao = scanner.nextInt();
+
+        switch(opcao){
+            case 1: 
+            System.out.println("Curso: ");
+            String cursoProcurado = scanner.nextLine();
+
+            //curso = findCursoByNome(cursoProcurado); 
+        }
     }
 
     // Métodos para gerenciar disciplinas
@@ -177,14 +198,5 @@ public class Secretario implements IPessoa {
             }
         }
         System.out.println("Usuário não encontrado.");
-    }
-
-    @Override
-    public void exibirMenu() {
-        System.out.println("Menu do Secretário:");
-        System.out.println("1. Gerenciar Disciplinas");
-        System.out.println("2. Gerenciar Professores");
-        System.out.println("3. Gerenciar Usuários");
-        System.out.println("4. Sair");
     }
 }
