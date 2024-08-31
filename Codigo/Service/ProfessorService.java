@@ -1,6 +1,8 @@
 package Service;
 
 import java.util.List;
+
+import Model.Aluno;
 import Model.Disciplina;
 import Repository.DisciplinaRepository;
 import Repository.ProfessorRepository;
@@ -54,12 +56,9 @@ public class ProfessorService {
             return;
         }
 
-        Optional<Disciplina> disciplinaOptional = disciplinaRepository.findDisciplinas().stream()
-                .filter(d -> d.getId() == Integer.parseInt(disciplinaId))
-                .findFirst();
+        Disciplina disciplina = disciplinaRepository.findDisciplinaById(Integer.parseInt(disciplinaId));
 
-        if (disciplinaOptional.isPresent()) {
-            Disciplina disciplina = disciplinaOptional.get();
+        if (disciplina != null) {
             List<Aluno> alunos = disciplina.getAlunos();
 
             if (alunos.isEmpty()) {

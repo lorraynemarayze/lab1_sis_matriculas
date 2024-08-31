@@ -60,6 +60,10 @@ public class Disciplina implements Serializable {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public int getId() {
         return id;
     }

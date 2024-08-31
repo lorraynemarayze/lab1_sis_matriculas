@@ -15,6 +15,10 @@ public class Professor extends Pessoa implements IPessoa {
         this.idDisciplinas = new ArrayList<>();
     }
 
+    public void cadastrarEmDisciplina(String disciplinaId) {
+        this.idDisciplinas.add(disciplinaId);
+    }
+
     public String getNome() {
         return nome;
     }

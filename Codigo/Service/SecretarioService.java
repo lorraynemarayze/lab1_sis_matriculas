@@ -18,7 +18,7 @@ public class SecretarioService {
     private AlunoRepository alunoRepository;
 
     public SecretarioService(CursoRepository cursoRepository, DisciplinaRepository disciplinaRepository,
-                             ProfessorRepository professorRepository, AlunoRepository alunoRepository) {
+            ProfessorRepository professorRepository, AlunoRepository alunoRepository) {
         this.cursoRepository = cursoRepository;
         this.disciplinaRepository = disciplinaRepository;
         this.professorRepository = professorRepository;
@@ -30,11 +30,11 @@ public class SecretarioService {
     public void gerenciarCurriculo(Scanner scanner) throws IOException {
         System.out.println("Gerenciar currículo:");
         System.out.println("1. Adicionar Disciplina");
-        System.out.println("2. Remover Disciplina"); 
+        System.out.println("2. Remover Disciplina");
         System.out.println("3. Renomear Disciplina");
         System.out.println("4. Sair");
 
-        // Lê a opção do usuário 
+        // Lê a opção do usuário
         int opcao = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
 
@@ -56,7 +56,7 @@ public class SecretarioService {
 
                 removerDisciplinaDoCurso(nomeCursoRemover, idDisciplinaRemover);
                 break;
-            case 3: 
+            case 3:
                 System.out.println("Informe o nome do curso: ");
                 String nomeCursoRenomear = scanner.nextLine();
                 System.out.println("Informe o ID da disciplina: ");
@@ -75,7 +75,8 @@ public class SecretarioService {
         }
     }
 
-    private void adicionarDisciplinaAoCurso(String nomeCurso, String nomeDisciplina, Scanner scanner) throws IOException {
+    private void adicionarDisciplinaAoCurso(String nomeCurso, String nomeDisciplina, Scanner scanner)
+            throws IOException {
         var curso = cursoRepository.findCursoByNome(nomeCurso);
         if (curso == null) {
             System.out.println("Curso não encontrado.");
@@ -92,7 +93,8 @@ public class SecretarioService {
         int cargaHorariaDisciplina = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
 
-        Disciplina novaDisciplina = new Disciplina(idDisciplina, nomeDisciplina, periodoDisciplina, cargaHorariaDisciplina, true);
+        Disciplina novaDisciplina = new Disciplina(idDisciplina, nomeDisciplina, periodoDisciplina,
+                cargaHorariaDisciplina, true);
 
         disciplinaRepository.writeDisciplina(novaDisciplina);
         curso.getDisciplinas().add(novaDisciplina);
@@ -107,17 +109,17 @@ public class SecretarioService {
             System.out.println("Curso não encontrado.");
             return;
         }
-        
+
         boolean disciplinaRemovida = curso.getDisciplinas().removeIf(d -> d.getId() == idDisciplina);
 
         if (disciplinaRemovida) {
-            cursoRepository.writeCurso(curso); 
+            cursoRepository.writeCurso(curso);
             System.out.println("Disciplina removida do curso com sucesso!");
         } else {
             System.out.println("Disciplina não encontrada no curso.");
         }
     }
-    
+
     private void renomearDisciplinaDoCurso(String nomeCurso, int idDisciplina, String novoNome) throws IOException {
         var curso = cursoRepository.findCursoByNome(nomeCurso);
         if (curso == null) {
@@ -136,6 +138,7 @@ public class SecretarioService {
 
         System.out.println("Disciplina não encontrada no curso.");
     }
+
     // Métodos para gerenciar disciplinas
     public void visualizarDisciplina() throws IOException {
         List<Disciplina> disciplinas = disciplinaRepository.findDisciplinas();
