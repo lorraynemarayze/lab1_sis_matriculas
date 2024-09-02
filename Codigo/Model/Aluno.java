@@ -7,13 +7,11 @@ public class Aluno extends Pessoa implements IPessoa {
     private String nome;
     private int id;
     private String senha;
-    private String tipo;
     private List<Disciplina> gradeCurricular;
 
     // Construtor com parâmetros nome e id
     public Aluno(String nome, int id, String senha) {
         super(nome, id, senha);
-        this.tipo = "Aluno";
         this.gradeCurricular = new ArrayList<>();
     }
 
@@ -47,14 +45,6 @@ public class Aluno extends Pessoa implements IPessoa {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public List<Disciplina> getGradeCurricular() {

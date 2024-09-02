@@ -18,15 +18,17 @@ public class SistemaAcademico {
 
     public static void main(String[] args) throws IOException {
         // Configuração dos Repositórios 
-        String arquivoDisciplinas = "../dados/disciplinas.csv";
-        String arquivoAlunos = "alunos.csv";
-        String arquivoProfessores = "../dados/professores.csv";
-        String arquivoCursos = "../dados/cursos.csv";
+        String arquivoDisciplinas = "Codigo/dados/disciplinas.txt";
+        String arquivoAlunos = "Codigo/dados/alunos.txt";
+        String arquivoProfessores = "Codigo/dados/professores.txt";
+        String arquivoCursos = "Codigo/dados/cursos.txt";
 
+        //erro: disciplina não pode ser null
         AlunoRepository alunoRepository = new AlunoRepository(arquivoAlunos, null); 
         DisciplinaRepository disciplinaRepository = new DisciplinaRepository(arquivoDisciplinas, alunoRepository);
         ProfessorRepository professorRepository = new ProfessorRepository(arquivoProfessores);
         CursoRepository cursoRepository = new CursoRepository(arquivoCursos, disciplinaRepository);
+        
         // Injeção de Dependências nos Services
         AlunoService alunoService = new AlunoService(alunoRepository, disciplinaRepository);
         ProfessorService professorService = new ProfessorService(professorRepository, disciplinaRepository);

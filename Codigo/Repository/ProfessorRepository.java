@@ -28,7 +28,6 @@ public class ProfessorRepository {
                 int id = Integer.parseInt(campos[0]);
                 String nome = campos[1];
                 String senha = campos[2];
-                //vê se vai dar ruim sem o tipo 
                 Professor professor = new Professor(id, nome, senha);
 
                 for (int i = 3; i < campos.length; i++) {
@@ -69,4 +68,4 @@ public class ProfessorRepository {
             // }
         }
     }
-}
+} 

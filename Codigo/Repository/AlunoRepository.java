@@ -28,11 +28,10 @@ public class AlunoRepository {
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivoCSV))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
-                String[] campos = linha.split(";");
+                String[] campos = linha.split(",");
                 int id = Integer.parseInt(campos[0]);
                 String nome = campos[1];
                 String senha = campos[2];
-                //vê se vai dar ruim sem o tipo 
                 Aluno aluno = new Aluno(nome, id, senha);
                 
                 for (int i = 3; i < campos.length; i++) {
@@ -63,14 +62,12 @@ public class AlunoRepository {
         // Escreve os cursos de volta para o arquivo CSV.
         try (PrintWriter writer = new PrintWriter(new FileWriter(arquivoCSV))) {
             writer.print(aluno.getId());
-            writer.print(";");
+            writer.print(",");
             writer.print(aluno.getNome());
-            writer.print(";");
+            writer.print(",");
             writer.print(aluno.getSenha());
-            writer.print(";");
-            writer.print(aluno.getTipo());
             for (Disciplina d : aluno.getGradeCurricular()) {
-                writer.print(";");
+                writer.print(",");
                 writer.print(d.getId());
             }
         }

@@ -6,12 +6,10 @@ public class Professor extends Pessoa implements IPessoa {
     private String nome;
     private int id;
     private String senha;
-    private String tipo;
     private List<String> idDisciplinas;
 
     public Professor(int id, String nome, String senha) {
         super(nome, id, senha);
-        this.tipo = "Professor";
         this.idDisciplinas = new ArrayList<>();
     }
 
@@ -41,14 +39,6 @@ public class Professor extends Pessoa implements IPessoa {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public List<String> getIdDisciplinas() {

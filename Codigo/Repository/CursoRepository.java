@@ -14,19 +14,19 @@ import Model.Disciplina;
 
 
 public class CursoRepository {
-    private String arquivoCSV;
+    private String arquivoTXT;
     private DisciplinaRepository disciplinaRepository;
 
-    public CursoRepository(String arquivoCSV, DisciplinaRepository disciplinaRepository) {
-        this.arquivoCSV = arquivoCSV;
+    public CursoRepository(String arquivoTXT, DisciplinaRepository disciplinaRepository) {
+        this.arquivoTXT = arquivoTXT;
         this.disciplinaRepository = disciplinaRepository;
     }
 
-    // Este método lê todos os cursos do arquivo CSV.
+    // Este método lê todos os cursos do arquivo TXT.
     public List<Curso> findCursos() throws IOException {
         List<Curso> cursos = new ArrayList<>();
         List<Disciplina> disciplinas = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(arquivoCSV))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(arquivoTXT))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] campos = linha.split(",");
@@ -49,7 +49,7 @@ public class CursoRepository {
         return cursos;
     }
 
-    // Este método busca um curso pelo nome no arquivo CSV.
+    // Este método busca um curso pelo nome no arquivo TXT.
     public Curso findCursoByNome(String nome) throws IOException {
         List<Curso> cursos = findCursos();
         for (Curso curso : cursos) {
@@ -61,8 +61,8 @@ public class CursoRepository {
     }
 
     public void writeCurso (Curso curso) throws IOException{
-        // Escreve os cursos de volta para o arquivo CSV.
-        try (PrintWriter writer = new PrintWriter(new FileWriter(arquivoCSV))) {
+        // Escreve os cursos de volta para o arquivo TXT.
+        try (PrintWriter writer = new PrintWriter(new FileWriter(arquivoTXT))) {
             writer.print(curso.getId());
             writer.print(",");
             writer.print(curso.getNome());
