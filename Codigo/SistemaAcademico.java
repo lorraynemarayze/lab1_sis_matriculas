@@ -1,4 +1,4 @@
-package Codigo;
+
 
 import Model.Aluno;
 import Model.Disciplina;
@@ -16,12 +16,12 @@ import java.util.Scanner;
 
 public class SistemaAcademico {
 
-    public static void main(String[] args) {
-        // Configuração dos Repositórios (adapte os caminhos dos arquivos)
-        String arquivoDisciplinas = "dados/disciplinas.csv";
-        String arquivoAlunos = "dados/alunos.csv";
-        String arquivoProfessores = "dados/professores.csv";
-        String arquivoCursos = "dados/cursos.csv";
+    public static void main(String[] args) throws IOException {
+        // Configuração dos Repositórios 
+        String arquivoDisciplinas = "../dados/disciplinas.csv";
+        String arquivoAlunos = "alunos.csv";
+        String arquivoProfessores = "../dados/professores.csv";
+        String arquivoCursos = "../dados/cursos.csv";
 
         AlunoRepository alunoRepository = new AlunoRepository(arquivoAlunos, null); 
         DisciplinaRepository disciplinaRepository = new DisciplinaRepository(arquivoDisciplinas, alunoRepository);
@@ -51,7 +51,7 @@ public class SistemaAcademico {
                         menuAluno(alunoService, scanner, alunoRepository);
                         break;
                     case 2:
-                        menuProfessor(professorService, scanner);
+                        menuProfessor(professorService, scanner, professorRepository);
                         break;
                     case 3:
                         menuSecretario(secretarioService, scanner);
@@ -106,14 +106,7 @@ public class SistemaAcademico {
                     int idDisciplina = scanner.nextInt();
                     scanner.nextLine(); // Limpa o buffer
 
-                    // Implementar lógica para buscar a disciplina pelo ID (no repositório?)
-                    Disciplina disciplina = null; // = ?
-                    
-                    if (disciplina != null) {
-                        alunoService.matricularEmDisciplina(alunoLogado, disciplina); 
-                    } else {
-                        System.out.println("Disciplina não encontrada.");
-                    }
+                    alunoService.matricularEmDisciplina(alunoLogado, idDisciplina); 
 
                     break;
                 case 2:
@@ -121,15 +114,9 @@ public class SistemaAcademico {
                     System.out.print("Digite o ID da disciplina para cancelar a matrícula: ");
                     int idDisciplinaCancelar = scanner.nextInt();
                     scanner.nextLine(); // Limpa o buffer
-                    
-                    // Implementar lógica para buscar a disciplina pelo ID (no repositório?)
-                    Disciplina disciplinaCancelar = null; // = ? 
-                    
-                    if (disciplinaCancelar != null) {
-                        alunoService.cancelarMatriculaDisciplina(alunoLogado, disciplinaCancelar);
-                    } else {
-                        System.out.println("Disciplina não encontrada.");
-                    }
+
+                    alunoService.cancelarMatriculaDisciplina(alunoLogado, idDisciplinaCancelar);
+
                     break;
                 case 3:
                     alunoService.verGradeCurricular(alunoLogado);
@@ -142,7 +129,7 @@ public class SistemaAcademico {
         }
     }
 
-    private static void menuProfessor(ProfessorService professorService, Scanner scanner) throws IOException {
+    private static void menuProfessor(ProfessorService professorService, Scanner scanner, ProfessorRepository professorRepository) throws IOException {
         // Implemente a lógica de login do professor aqui (solicitar ID e senha)
         // ... 
         System.out.print("Digite seu ID: ");
@@ -150,7 +137,14 @@ public class SistemaAcademico {
         scanner.nextLine();
 
         // Implementar lógica para buscar o professor pelo ID (no repositório?)
-        Professor professorLogado = null; // = ? 
+        Professor professorLogado = null; 
+        try {
+            professorLogado = professorRepository.findProfessorById(professorId); // Tenta encontrar o professor pelo ID
+        } catch (IOException e) {
+            System.out.println("Erro ao acessar os dados do professor. Tente novamente mais tarde.");
+            e.printStackTrace(); // Imprime o erro para debug
+            return; // Retorna para evitar NullPointerException
+        }
 
         if (professorLogado == null) {
             System.out.println("Professor não encontrado.");

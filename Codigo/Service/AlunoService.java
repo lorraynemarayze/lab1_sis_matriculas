@@ -16,7 +16,7 @@ public class AlunoService {
         this.disciplinaRepository = disciplinaRepository;
     }
 
-    public void matricularEmDisciplina(Aluno aluno, Disciplina disciplina) throws IOException {
+    public void matricularEmDisciplina(Aluno aluno, int idDisciplina) throws IOException {
         // Utiliza o método da AlunoRepository para buscar o aluno por ID
         Aluno alunoExistente = alunoRepository.findAlunoById(aluno.getId());
 
@@ -25,19 +25,25 @@ public class AlunoService {
             return; 
         }
 
-        // Verifica se a disciplina já está na grade do aluno
-        if (!alunoExistente.getGradeCurricular().contains(disciplina)) {
-            alunoExistente.getGradeCurricular().add(disciplina);
+        Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
 
-            // Utiliza o método da AlunoRepository para salvar o aluno atualizado
-            alunoRepository.writeAluno(alunoExistente);
-            System.out.println("Aluno matriculado em " + disciplina.getNome() + " com sucesso!");
+        // Verifica se a disciplina já está na grade do aluno
+        if (disciplina != null) {
+            if (!alunoExistente.getGradeCurricular().contains(disciplina)) {
+                alunoExistente.getGradeCurricular().add(disciplina);
+    
+                // Utiliza o método da AlunoRepository para salvar o aluno atualizado
+                alunoRepository.writeAluno(alunoExistente);
+                System.out.println("Aluno matriculado em " + disciplina.getNome() + " com sucesso!");
+            } else {
+                System.out.println("Aluno já está matriculado nesta disciplina.");
+            }         
         } else {
-            System.out.println("Aluno já está matriculado nesta disciplina.");
-        }
+            System.out.println("Disciplina não encontrada.");
+        }  
     }
 
-    public void cancelarMatriculaDisciplina(Aluno aluno, Disciplina disciplina) throws IOException {
+    public void cancelarMatriculaDisciplina(Aluno aluno, int idDisciplina) throws IOException {
         Aluno alunoExistente = alunoRepository.findAlunoById(aluno.getId());
 
         if (alunoExistente == null) {
@@ -45,13 +51,19 @@ public class AlunoService {
             return;
         }
 
-        if (alunoExistente.getGradeCurricular().contains(disciplina)) {
-            alunoExistente.getGradeCurricular().remove(disciplina);
-
-            alunoRepository.writeAluno(alunoExistente);
-            System.out.println("Matrícula em " + disciplina.getNome() + " cancelada com sucesso!");
+        Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
+                    
+        if (disciplina != null) {
+            if (alunoExistente.getGradeCurricular().contains(disciplina)) {
+                alunoExistente.getGradeCurricular().remove(disciplina);
+    
+                alunoRepository.writeAluno(alunoExistente);
+                System.out.println("Matrícula em " + disciplina.getNome() + " cancelada com sucesso!");
+            } else {
+                System.out.println("Aluno não está matriculado nesta disciplina.");
+            }  
         } else {
-            System.out.println("Aluno não está matriculado nesta disciplina.");
+            System.out.println("Disciplina não encontrada.");
         }
     }
 
