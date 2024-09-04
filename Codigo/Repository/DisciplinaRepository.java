@@ -19,9 +19,8 @@ public class DisciplinaRepository {
     private AlunoRepository alunoRepository;
     private ProfessorRepository professorRepository;
 
-    public DisciplinaRepository(String arquivoCSV, AlunoRepository alunoRepository) {
+    public DisciplinaRepository(String arquivoCSV) {
         this.arquivoCSV = arquivoCSV;
-        this.alunoRepository = alunoRepository;
 
     }
 
@@ -83,5 +82,13 @@ public class DisciplinaRepository {
                 writer.print(a.getId());
             }
         }
+    }
+
+    public void setAlunoRepository(AlunoRepository alunoRepository) {
+        this.alunoRepository = alunoRepository;
+    }
+    
+    public void setProfessorRepository(ProfessorRepository professorRepository) {
+        this.professorRepository = professorRepository;
     }
 } 

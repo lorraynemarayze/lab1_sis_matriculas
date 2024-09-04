@@ -16,9 +16,8 @@ public class AlunoRepository {
     private String arquivoCSV;
     private DisciplinaRepository disciplinaRepository;
 
-    public AlunoRepository(String arquivoCSV, DisciplinaRepository disciplinaRepository) {
+    public AlunoRepository(String arquivoCSV) {
         this.arquivoCSV = arquivoCSV;
-        this.disciplinaRepository = disciplinaRepository;
     }
 
     // Este método lê todos os cursos do arquivo CSV.
@@ -71,5 +70,9 @@ public class AlunoRepository {
                 writer.print(d.getId());
             }
         }
+    }
+
+    public void setDisciplinaRepository(DisciplinaRepository disciplinaRepository) {
+        this.disciplinaRepository = disciplinaRepository;
     }
 }

@@ -18,14 +18,14 @@ public class SistemaAcademico {
 
     public static void main(String[] args) throws IOException {
         // Configuração dos Repositórios 
-        String arquivoDisciplinas = "Codigo/dados/disciplinas.txt";
-        String arquivoAlunos = "Codigo/dados/alunos.txt";
-        String arquivoProfessores = "Codigo/dados/professores.txt";
-        String arquivoCursos = "Codigo/dados/cursos.txt";
+        String arquivoDisciplinas = "lab1_sis_matriculas\\Codigo\\dados\\disciplinas.txt";
+        String arquivoAlunos = "lab1_sis_matriculas\\Codigo\\dados\\alunos.txt";
+        String arquivoProfessores = "lab1_sis_matriculas\\Codigo\\dados\\professores.txt";
+        String arquivoCursos = "lab1_sis_matriculas\\Codigo\\dados\\cursos.txt";
 
         //erro: disciplina não pode ser null
-        AlunoRepository alunoRepository = new AlunoRepository(arquivoAlunos, null); 
-        DisciplinaRepository disciplinaRepository = new DisciplinaRepository(arquivoDisciplinas, alunoRepository);
+        AlunoRepository alunoRepository = new AlunoRepository(arquivoAlunos); 
+        DisciplinaRepository disciplinaRepository = new DisciplinaRepository(arquivoDisciplinas);
         ProfessorRepository professorRepository = new ProfessorRepository(arquivoProfessores);
         CursoRepository cursoRepository = new CursoRepository(arquivoCursos, disciplinaRepository);
         
@@ -33,6 +33,9 @@ public class SistemaAcademico {
         AlunoService alunoService = new AlunoService(alunoRepository, disciplinaRepository);
         ProfessorService professorService = new ProfessorService(professorRepository, disciplinaRepository);
         SecretarioService secretarioService = new SecretarioService(cursoRepository, disciplinaRepository, professorRepository, alunoRepository);
+        alunoRepository.setDisciplinaRepository(disciplinaRepository); 
+        disciplinaRepository.setAlunoRepository(alunoRepository); 
+        disciplinaRepository.setProfessorRepository(professorRepository);
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
