@@ -34,11 +34,11 @@ public class AlunoRepository {
                 Aluno aluno = new Aluno(nome, id, senha);
 
 
-                // for (int i = 3; i < campos.length; i++) {
-                //     int idDisciplina = Integer.parseInt(campos[i]);
-                //     Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
-                //     disciplinas.add(disciplina);
-                // }
+                for (int i = 3; i < campos.length; i++) {
+                    int idDisciplina = Integer.parseInt(campos[i]);
+                    Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
+                    disciplinas.add(disciplina);
+                }
                 
                 aluno.setGradeCurricular(disciplinas);
                 
