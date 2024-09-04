@@ -18,10 +18,10 @@ public class SistemaAcademico {
 
     public static void main(String[] args) throws IOException {
         // Configuração dos Repositórios 
-        String arquivoDisciplinas = "lab1_sis_matriculas/Codigo/dados/disciplinas.txt";
-        String arquivoAlunos = "lab1_sis_matriculas/Codigo/dados/alunos.txt";
-        String arquivoProfessores = "lab1_sis_matriculas/Codigo/dados/professores.txt";
-        String arquivoCursos = "lab1_sis_matriculas/Codigo/dados/cursos.txt";
+        String arquivoDisciplinas = "Codigo/dados/disciplinas.txt";
+        String arquivoAlunos = "Codigo/dados/alunos.txt";
+        String arquivoProfessores = "Codigo/dados/professores.txt";
+        String arquivoCursos = "Codigo/dados/cursos.txt";
 
         //erro: disciplina não pode ser null
         AlunoRepository alunoRepository = new AlunoRepository(arquivoAlunos); 
@@ -104,7 +104,7 @@ public class SistemaAcademico {
             System.out.print("Escolha uma opção: ");
             int opcaoAluno = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
-            System.out.println(alunoLogado);
+
 
             switch (opcaoAluno) {
                 case 1:

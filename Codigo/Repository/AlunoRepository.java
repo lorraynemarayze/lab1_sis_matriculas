@@ -28,13 +28,9 @@ public class AlunoRepository {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] campos = linha.split(",");
-                System.out.println(campos);
                 int id = Integer.parseInt(campos[0]);
-                System.out.println(id);
                 String nome = campos[1];
-                System.out.println(nome);
                 String senha = campos[2];
-                System.out.println(senha);
                 Aluno aluno = new Aluno(nome, id, senha);
 
 
@@ -55,21 +51,16 @@ public class AlunoRepository {
     public Aluno findAlunoById(int id) throws IOException {
         List<Aluno> alunos = findAlunos();
         for (Aluno aluno : alunos) {
-            System.out.println(aluno.getId());
             if (aluno.getId() == id) {
-                return aluno;
+                return aluno; // Retorna o aluno se o ID for encontrado
             }
         }
-        return null; // retorna null se não encontrar nenhuma disciplina com o ID fornecido
+        return null; // Retorna null se o aluno não for encontrado
     }
 
     public void writeAluno (Aluno aluno) throws IOException{
         // Escreve os cursos de volta para o arquivo CSV.
         try (PrintWriter writer = new PrintWriter(new FileWriter(arquivoCSV))) {
-            System.out.println(aluno.getId());
-            System.out.println(aluno.getNome());
-            System.out.println(aluno.getSenha());
-
             writer.print(aluno.getId());
             writer.print(",");
             writer.print(aluno.getNome());
