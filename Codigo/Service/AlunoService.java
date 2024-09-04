@@ -17,15 +17,16 @@ public class AlunoService {
     }
 
     public void matricularEmDisciplina(Aluno aluno, int idDisciplina) throws IOException {
-        // Utiliza o método da AlunoRepository para buscar o aluno por ID
+    
         Aluno alunoExistente = alunoRepository.findAlunoById(aluno.getId());
 
         if (alunoExistente == null) {
             System.out.println("Aluno não encontrado.");
-            return; 
+            return;
         }
 
         Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
+        System.out.println(alunoExistente);
 
         // Verifica se a disciplina já está na grade do aluno
         if (disciplina != null) {

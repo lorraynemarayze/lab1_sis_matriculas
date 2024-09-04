@@ -17,7 +17,6 @@ public class ProfessorRepository {
         this.arquivoCSV = arquivoCSV;
     }
 
-
     public List<Professor> findProfessores() throws IOException {
         List<Professor> professores = new ArrayList<>();
         List<String> idDisciplinas = new ArrayList<>();
@@ -42,9 +41,7 @@ public class ProfessorRepository {
         return professores;
     }
 
-
-
-    public Professor findProfessorById(int id) throws IOException{
+    public Professor findProfessorById(int id) throws IOException {
         List<Professor> professores = findProfessores();
         for (Professor professor : professores) {
             if (professor.getId() == id) {
@@ -54,7 +51,7 @@ public class ProfessorRepository {
         return null; // retorna null se não encontrar nenhuma disciplina com o ID fornecido
     }
 
-     public void writeProfessor(Professor professor) throws IOException{
+    public void writeProfessor(Professor professor) throws IOException {
         // Escreve os professors de volta para o arquivo CSV.
         try (PrintWriter writer = new PrintWriter(new FileWriter(arquivoCSV))) {
             writer.print(professor.getId());
@@ -63,9 +60,9 @@ public class ProfessorRepository {
             writer.print(",");
             writer.print(professor.getSenha());
             // for (String ids : professor.getIdDisciplinas()) {
-            //     writer.print(",");
-            //     writer.print(ids.);
+            // writer.print(",");
+            // writer.print(ids.);
             // }
         }
     }
-} 
+}

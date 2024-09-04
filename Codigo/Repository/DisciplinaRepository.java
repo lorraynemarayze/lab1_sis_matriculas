@@ -26,8 +26,7 @@ public class DisciplinaRepository {
 
     // Este método lê todas as disciplinas do arquivo CSV.
     public List<Disciplina> findDisciplinas() throws IOException {
-        List<Disciplina> disciplinas = new ArrayList<>();
-        List<Aluno> alunos = new ArrayList<>(); 
+        List<Disciplina> disciplinas = new ArrayList<>(); 
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivoCSV))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
@@ -42,16 +41,18 @@ public class DisciplinaRepository {
                 int idProfessor = Integer.parseInt(campos[5]); 
                 Professor professor = professorRepository.findProfessorById(idProfessor);
                 disciplina.setProfessor(professor);
-
-                for (int i = 3; i < campos.length; i++) {
-                    int idAluno = Integer.parseInt(campos[i]);
-                    Aluno aluno = alunoRepository.findAlunoById(idAluno);
-                    alunos.add(aluno);
-                }
                 disciplinas.add(disciplina);
             }
         }
         return disciplinas;
+    }
+
+    public void CriaGradeCurricular() throws IOException{
+        List <Aluno> alunos = alunoRepository.findAlunos();
+        List <Disciplina> disciplinas = findDisciplinas();
+        for (Aluno a : alunos){
+            a.setGradeCurricular(disciplinas);
+        }
     }
 
     // Este método busca uma disciplina pelo ID no arquivo CSV.
@@ -87,7 +88,7 @@ public class DisciplinaRepository {
     public void setAlunoRepository(AlunoRepository alunoRepository) {
         this.alunoRepository = alunoRepository;
     }
-    
+
     public void setProfessorRepository(ProfessorRepository professorRepository) {
         this.professorRepository = professorRepository;
     }

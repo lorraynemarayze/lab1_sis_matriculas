@@ -18,10 +18,10 @@ public class SistemaAcademico {
 
     public static void main(String[] args) throws IOException {
         // Configuração dos Repositórios 
-        String arquivoDisciplinas = "lab1_sis_matriculas\\Codigo\\dados\\disciplinas.txt";
-        String arquivoAlunos = "lab1_sis_matriculas\\Codigo\\dados\\alunos.txt";
-        String arquivoProfessores = "lab1_sis_matriculas\\Codigo\\dados\\professores.txt";
-        String arquivoCursos = "lab1_sis_matriculas\\Codigo\\dados\\cursos.txt";
+        String arquivoDisciplinas = "lab1_sis_matriculas/Codigo/dados/disciplinas.txt";
+        String arquivoAlunos = "lab1_sis_matriculas/Codigo/dados/alunos.txt";
+        String arquivoProfessores = "lab1_sis_matriculas/Codigo/dados/professores.txt";
+        String arquivoCursos = "lab1_sis_matriculas/Codigo/dados/cursos.txt";
 
         //erro: disciplina não pode ser null
         AlunoRepository alunoRepository = new AlunoRepository(arquivoAlunos); 
@@ -30,12 +30,12 @@ public class SistemaAcademico {
         CursoRepository cursoRepository = new CursoRepository(arquivoCursos, disciplinaRepository);
         
         // Injeção de Dependências nos Services
-        AlunoService alunoService = new AlunoService(alunoRepository, disciplinaRepository);
-        ProfessorService professorService = new ProfessorService(professorRepository, disciplinaRepository);
-        SecretarioService secretarioService = new SecretarioService(cursoRepository, disciplinaRepository, professorRepository, alunoRepository);
         alunoRepository.setDisciplinaRepository(disciplinaRepository); 
         disciplinaRepository.setAlunoRepository(alunoRepository); 
         disciplinaRepository.setProfessorRepository(professorRepository);
+        AlunoService alunoService = new AlunoService(alunoRepository, disciplinaRepository);
+        ProfessorService professorService = new ProfessorService(professorRepository, disciplinaRepository);
+        SecretarioService secretarioService = new SecretarioService(cursoRepository, disciplinaRepository, professorRepository, alunoRepository);
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
@@ -56,7 +56,7 @@ public class SistemaAcademico {
                         menuAluno(alunoService, scanner, alunoRepository);
                         break;
                     case 2:
-                        menuProfessor(professorService, scanner, professorRepository);
+                    menuProfessor(professorService, scanner, professorRepository);
                         break;
                     case 3:
                         menuSecretario(secretarioService, scanner);
@@ -83,6 +83,7 @@ public class SistemaAcademico {
         Aluno alunoLogado = null;  // Inicializa o alunoLogado como null
         try {
             alunoLogado = alunoRepository.findAlunoById(alunoId); // Tenta encontrar o aluno pelo ID
+            System.out.println(alunoLogado);
         } catch (IOException e) {
             System.out.println("Erro ao acessar os dados do aluno. Tente novamente mais tarde.");
             e.printStackTrace(); // Imprime o erro para debug
@@ -103,6 +104,7 @@ public class SistemaAcademico {
             System.out.print("Escolha uma opção: ");
             int opcaoAluno = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
+            System.out.println(alunoLogado);
 
             switch (opcaoAluno) {
                 case 1:

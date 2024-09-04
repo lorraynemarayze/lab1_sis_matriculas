@@ -28,16 +28,21 @@ public class AlunoRepository {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] campos = linha.split(",");
+                System.out.println(campos);
                 int id = Integer.parseInt(campos[0]);
+                System.out.println(id);
                 String nome = campos[1];
+                System.out.println(nome);
                 String senha = campos[2];
+                System.out.println(senha);
                 Aluno aluno = new Aluno(nome, id, senha);
-                
-                for (int i = 3; i < campos.length; i++) {
-                    int idDisciplina = Integer.parseInt(campos[i]);
-                    Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
-                    disciplinas.add(disciplina);
-                }
+
+
+                // for (int i = 3; i < campos.length; i++) {
+                //     int idDisciplina = Integer.parseInt(campos[i]);
+                //     Disciplina disciplina = disciplinaRepository.findDisciplinaById(idDisciplina);
+                //     disciplinas.add(disciplina);
+                // }
                 
                 aluno.setGradeCurricular(disciplinas);
                 
@@ -50,6 +55,7 @@ public class AlunoRepository {
     public Aluno findAlunoById(int id) throws IOException {
         List<Aluno> alunos = findAlunos();
         for (Aluno aluno : alunos) {
+            System.out.println(aluno.getId());
             if (aluno.getId() == id) {
                 return aluno;
             }
@@ -60,6 +66,10 @@ public class AlunoRepository {
     public void writeAluno (Aluno aluno) throws IOException{
         // Escreve os cursos de volta para o arquivo CSV.
         try (PrintWriter writer = new PrintWriter(new FileWriter(arquivoCSV))) {
+            System.out.println(aluno.getId());
+            System.out.println(aluno.getNome());
+            System.out.println(aluno.getSenha());
+
             writer.print(aluno.getId());
             writer.print(",");
             writer.print(aluno.getNome());
@@ -71,6 +81,7 @@ public class AlunoRepository {
             }
         }
     }
+
 
     public void setDisciplinaRepository(DisciplinaRepository disciplinaRepository) {
         this.disciplinaRepository = disciplinaRepository;
